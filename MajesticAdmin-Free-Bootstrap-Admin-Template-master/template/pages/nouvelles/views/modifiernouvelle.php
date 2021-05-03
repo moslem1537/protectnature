@@ -7,18 +7,19 @@
     
     if (
         isset($_POST["titre"]) && 
-        isset($_POST["contenu"]) 
-      
+        isset($_POST["date"]) &&
+       isset($_POST["contenu"])
   
     ){
         if (
             !empty($_POST["titre"]) && 
-            !empty($_POST["contenu"]) 
-         
+            !empty($_POST["date"]) &&
+         !empty($_POST["contenu"])
       
         ) {
-            $prod = new nouvellec(
+            $prod = new nouvelles(
                 $_POST['titre'],
+                $_POST['date'] ,
                 $_POST['contenu']
               
             
@@ -79,7 +80,7 @@
                 $prod = $nouvellec->recuperernouvelle($_GET['id']);
                 
         ?>
-        <form action="" method="POST" >
+        <form action="" method="POST" enctype="multipart/form-data">
             <table id="tabm">
                 <tr>
                    
@@ -100,6 +101,15 @@
                         <input type="text" name="titre" id="titre" maxlength="20" value = "<?php echo $prod['titre']; ?>">
                     </td>
                 </tr>
+                 <tr>
+                    <td>
+                        <label for="date">date:
+                        </label>
+                    </td>
+                    <td>
+                        <input type="date" name="date" id="date"  value = "<?php echo $prod['date']; ?>">
+                    </td>
+                </tr>
               
                 <tr>
                    
@@ -111,7 +121,16 @@
                         <input type="text" name="contenu" id="contenu" value = "<?php echo $prod['contenu']; ?>">
                     </td>
                 </tr>
-             
+              <tr>
+                    
+                    <td>
+                        <label for="photo">photo:
+                        </label>
+                    </td>
+                    <td>
+                       <input type="file" name="img" class="form-control-file">
+                    </td>
+                </tr>
                 
                 <tr>
                     <td></td>

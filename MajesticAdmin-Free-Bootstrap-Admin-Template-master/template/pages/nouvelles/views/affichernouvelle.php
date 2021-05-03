@@ -42,10 +42,16 @@
       left:35%;
       top: 15%;
 }
+#imp {
+  position: fixed;
+      left: 44%;
+      top: 15%;
+}
   </style>
 </head>
 <body>
   <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <button id="imp"><a href=''onclick='window.print();return false ;'>Imprimer</a></button>
 
     <button id="ajouter"><a href="ajouternouvelle.php">Ajouter un nouvelle</a></button>
     <button id="tri" ><a  href="affichertri.php?order=true">Trier</a></button>
@@ -80,12 +86,15 @@
 
       <div class="d-sm-flex justify-content-center justify-content-sm-between">
 
+<form action="" method="POST" enctype="multipart/form-data">
 
 <table  border=1 id="tab">
   <tr>
     <th>id</th>
      <th>titre</th>
+      <th>date</th>
      <th>contenu</th>
+     <th>photo</th>
      <th>supprimer</th>
     <th>modifier</th>
   </tr>
@@ -94,19 +103,22 @@
   <tr>
     <td><?php echo $row->id   ?></td>
      <td><?php echo $row->titre   ?></td>
-     <td><?php echo $row->contenu  ?></td>
+     <td><?php echo $row->date   ?></td>
+     <td ><?php echo $row->contenu  ?></td>
+     <?php echo '<td><img src="pictur/'.$row->photo.'" width = "50px" height ="50px" /></td>' ?>
      <td>
                         <form method="POST" action="supprimernouvelle.php">
                         <input type="submit" name="supprimer" value="supprimer">
-                        <input type="hidden" value=<?PHP echo $prod['id']; ?> name="id">
+                        <input type="hidden" value=<?PHP echo $row->id; ?> name="id">
                         </form>
                     </td>
                     <td>
-                        <a href="modifiernouvelle.php?id=<?PHP echo $prod['id']; ?>"> Modifier </a>
+                        <a href="modifiernouvelle.php?id=<?PHP echo $row->id; ?>"> Modifier </a>
                     </td>
   </tr>
   <?php endwhile; ?>
 </table>
+</form>
 </div>
 
 

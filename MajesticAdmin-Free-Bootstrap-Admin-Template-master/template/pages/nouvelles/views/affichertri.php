@@ -31,11 +31,12 @@
     		
 		<button id="ajouter"><a href="ajouternouvelle.php" >Ajouter nouvelle</a></button>
     
-		
+		<form action="" method="POST" enctype="multipart/form-data">
 		<table border=1 id="tab">
 			<tr>
 				<th>id</th>
 				<th>titre</th>
+        <th>date</th>
 				<th>contenu</th>
 			
 				<th>supprimer</th>
@@ -48,8 +49,9 @@
 				<tr>
 					<td><?PHP echo $prod['id']; ?></td>
 					<td><?PHP echo $prod['titre']; ?></td>
+          <td><?PHP echo $prod['date']; ?></td>
 					<td><?PHP echo $prod['contenu']; ?></td>
-				
+				<?php echo '<td><img src="pictur/'.$prod['photo'].'" width = "50px" height ="50px" /></td>' ?>
 					<td>
 						<form method="POST" action="supprimernouvelle.php">
 						<input type="submit" name="supprimer" value="supprimer">
@@ -64,6 +66,7 @@
 				}
 			?>
 		</table>
+     </form>
 	</body>
 </html>
 <!DOCTYPE html>

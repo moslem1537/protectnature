@@ -6,7 +6,11 @@
 		private ?int $quantite = null;
 		private ?string $description = null;
 		
-		
+		  	function photo(){
+			$photo = "";
+		$photo= $_FILES['img']['name'];
+		return $photo;
+		}
 		function __construct(string $nom, int $prix, int $quantite, string $description){
 			
 			$this->nom=$nom;

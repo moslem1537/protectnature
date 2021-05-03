@@ -1,4 +1,4 @@
-.<?php
+<?php
     include "../controller/produitc.php";
     include_once '../Model/produits.php';
 
@@ -29,7 +29,7 @@
            
            
                  $produitc->modifierproduit($prod, $_GET['id']);
-            header('refresh:2;url=afficherproduit.php');
+             header('refresh:2;url=afficherproduit.php');
       
            
         }
@@ -82,7 +82,7 @@
                 $prod = $produitc->recupererproduit($_GET['id']);
                 
         ?>
-        <form action="" method="POST" >
+        <form action="" method="POST" enctype="multipart/form-data" >
             <table id="tabm">
                 <tr>
                    
@@ -131,7 +131,16 @@
                     </td>
                 </tr>
              
-                
+                 <tr>
+                    
+                    <td>
+                        <label for="photo">photo:
+                        </label>
+                    </td>
+                    <td>
+                       <input type="file" name="img" class="form-control-file">
+                    </td>
+                </tr>
                 <tr>
                     <td></td>
                     <td>
@@ -346,9 +355,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../../pages/charts/chartjs.html">
+            <a class="nav-link" href="../../../pages/nouvelles/views/affichernouvelle.php">
               <i class="mdi mdi-chart-pie menu-icon"></i>
-              <span class="menu-title">Charts</span>
+              <span class="menu-title">Nouvelles</span>
             </a>
           </li>
           <li class="nav-item">

@@ -5,9 +5,12 @@
 	class produitc {
 		
 		function ajouterproduit($produits){
-			$sql="INSERT INTO produits (nom, prix, quantite, description) 
-			VALUES (:nom,:prix,:quantite, :description)";
+			$sql="INSERT INTO produits (nom, prix, quantite, description,photo) 
+			VALUES (:nom,:prix,:quantite, :description, :photo)";
 			$db = config::getConnexion();
+			$photo = $produits->photo();
+			 $upload ="picture/".$photo;
+           move_uploaded_file($_FILES['img']['tmp_name'],$upload);
 			try{
 				$query = $db->prepare($sql);
 			
@@ -16,6 +19,7 @@
 					'prix' => $produits->getprix(),
 					'quantite' => $produits->getquantite(),
 					'description' => $produits->getdescription(),
+					'photo' => $produits->photo(),
 					
 				]);			
 			}
@@ -52,8 +56,11 @@
 		}
 		function modifierproduit($produits, $id){
 			
-			$sql="UPDATE produits SET nom=:nom, prix=:prix, quantite=:quantite, description=:description WHERE id=:id";
+			$sql="UPDATE produits SET nom=:nom, prix=:prix, quantite=:quantite, description=:description ,photo=:photo WHERE id=:id";
 $db = config::getConnexion();
+$photo = $produits->photo();
+			 $upload ="picture/".$photo;
+           move_uploaded_file($_FILES['img']['tmp_name'],$upload);
 try {
 $query = $db->prepare($sql);
 $query->execute([
@@ -61,6 +68,7 @@ $query->execute([
 'prix' => $produits->getprix(),
 'quantite' => $produits->getquantite(),
 'description' => $produits->getdescription(),
+'photo' => $produits->photo(),
 'id' => $id
 ]);
 }

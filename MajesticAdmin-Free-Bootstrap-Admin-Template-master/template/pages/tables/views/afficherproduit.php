@@ -1,4 +1,4 @@
-
+    
 <?PHP
     include "../controller/produitc.php";
 
@@ -42,10 +42,17 @@
       left:35%;
       top: 15%;
 }
+#imp {
+  position: fixed;
+      left: 44%;
+      top: 15%;
+}
+
   </style>
 </head>
 <body>
   <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <button id="imp"><a href=''onclick='window.print();return false ;'>Imprimer</a></button>
 
     <button id="ajouter"><a href="ajouterproduit.php">Ajouter un produits</a></button>
     <button id="tri" ><a  href="affichertri.php?order=true">Trier</a></button>
@@ -80,7 +87,7 @@
 
       <div class="d-sm-flex justify-content-center justify-content-sm-between">
 
-
+<form action="" method="POST" enctype="multipart/form-data">
 <table  border=1 id="tab">
   <tr>
     <th>id</th>
@@ -88,6 +95,7 @@
      <th>prix</th>
      <th>quantite </th>
      <th>description  </th>
+     <th>photo </th>
      <th>supprimer</th>
     <th>modifier</th>
   </tr>
@@ -99,18 +107,20 @@
      <td><?php echo $row->prix  ?></td>
      <td><?php echo $row->quantite  ?></td>
      <td><?php echo $row->description  ?></td>
+     <?php echo '<td><img src="picture/'.$row->photo.'" width = "50px" height ="50px" /></td>' ?>
      <td>
                         <form method="POST" action="supprimerproduit.php">
                         <input type="submit" name="supprimer" value="supprimer">
-                        <input type="hidden" value=<?PHP echo $prod['id']; ?> name="id">
+                        <input type="hidden" value=<?PHP echo $row->id ; ?> name="id">
                         </form>
                     </td>
                     <td>
-                        <a href="modifierproduit.php?id=<?PHP echo $prod['id']; ?>"> Modifier </a>
+                        <a href="modifierproduit.php?id=<?PHP echo $row->id ; ?>"> Modifier </a>
                     </td>
   </tr>
   <?php endwhile; ?>
 </table>
+</form>
 </div>
 
 
@@ -304,9 +314,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../../pages/charts/chartjs.html">
+            <a class="nav-link" href="../../../pages/nouvelles/views/affichernouvelle.php">
               <i class="mdi mdi-chart-pie menu-icon"></i>
-              <span class="menu-title">Charts</span>
+              <span class="menu-title">Nouvelles</span>
             </a>
           </li>
           <li class="nav-item">

@@ -31,7 +31,7 @@
     		
 		<button id="ajouter"><a href="ajouterproduit.php" >Ajouter un produits</a></button>
     
-		
+		<form action="" method="POST" enctype="multipart/form-data">
 		<table border=1 id="tab">
 			<tr>
 				<th>id</th>
@@ -52,6 +52,7 @@
 					<td><?PHP echo $prod['prix']; ?></td>
 					<td><?PHP echo $prod['quantite']; ?></td>
 					<td><?PHP echo $prod['description']; ?></td>
+          <?php echo '<td><img src="picture/'.$prod['photo'].'" width = "50px" height ="50px" /></td>' ?>
 					<td>
 						<form method="POST" action="supprimerproduit.php">
 						<input type="submit" name="supprimer" value="supprimer">
@@ -66,6 +67,7 @@
 				}
 			?>
 		</table>
+    </form>
 	</body>
 </html>
 <!DOCTYPE html>
@@ -252,9 +254,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../../pages/charts/chartjs.html">
+            <a class="nav-link" href="../../../pages/nouvelles/views/affichernouvelle.php">
               <i class="mdi mdi-chart-pie menu-icon"></i>
-              <span class="menu-title">Charts</span>
+              <span class="menu-title">Nouvelles</span>
             </a>
           </li>
           <li class="nav-item">

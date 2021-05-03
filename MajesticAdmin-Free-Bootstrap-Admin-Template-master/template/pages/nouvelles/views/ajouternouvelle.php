@@ -11,19 +11,20 @@
     $prodc = new nouvellec();
     if (
         isset($_POST["titre"]) && 
+        isset($_POST["date"]) &&
         isset($_POST["contenu"]) 
        
     ) {
         if (
             !empty($_POST["titre"]) && 
-            !empty($_POST["contenu"]) 
-         
+            !empty($_POST["date"]) &&
+         !empty($_POST["contenu"])
         ) {
             $prod = new nouvelles(
                 $_POST['titre'],
-                $_POST['contenu'] 
+                $_POST['date'] , 
              
-              
+              $_POST['contenu']
             );
             $prodc->ajouternouvelle($prod);
             header('Location:affichernouvelle.php');
@@ -71,7 +72,7 @@
           
         </div>
         
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <table border="1" id="tabaj">
 
                 <tr>
@@ -82,7 +83,14 @@
                     </td>
                     <td><input type="text" name="titre" id="titre" maxlength="20"></td>
                 </tr>
-             
+                <tr>
+                    
+                    <td>
+                        <label for="date">date:
+                        </label>
+                    </td>
+                    <td><input type="date" name="date" id="date" ></td>
+                </tr>
                 <tr>
                     
                     <td>
@@ -93,6 +101,17 @@
                         <input type="text" name="contenu" id="contenu" >
                     </td>
                 </tr>
+                 <tr>
+                    
+                    <td>
+                        <label for="photo">photo:
+                        </label>
+                    </td>
+                    <td>
+                       <input type="file" name="img" class="form-control-file">
+                    </td>
+                </tr>
+                <tr>
                 <tr>
                     <td></td>
                     <td>

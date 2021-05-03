@@ -74,7 +74,7 @@
           
         </div>
         
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <table border="1" id="tabaj">
 
                 <tr>
@@ -110,6 +110,16 @@
                     </td>
                     <td>
                         <input type="text" name="description" id="description" >
+                    </td>
+                </tr>
+                 <tr>
+                    
+                    <td>
+                        <label for="photo">photo:
+                        </label>
+                    </td>
+                    <td>
+                       <input type="file" name="img" class="form-control-file">
                     </td>
                 </tr>
                 <tr>
@@ -316,9 +326,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../../pages/charts/chartjs.html">
+            <a class="nav-link" href="../../../pages/nouvelles/views/affichernouvelle.php">
               <i class="mdi mdi-chart-pie menu-icon"></i>
-              <span class="menu-title">Charts</span>
+              <span class="menu-title">Nouvelles</span>
             </a>
           </li>
           <li class="nav-item">
